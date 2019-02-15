@@ -4,11 +4,9 @@ import 'package:flutter/material.dart';
  * 主页内容
  */
 class HomePage extends StatefulWidget {
-  final String title=" Life is beauty ";
-  @override
-  State createState() {
+  HomePage({Key key, }) : super(key: key);
+  _HomePageState createState() => _HomePageState();
 
-  }
 }
 
 /**
@@ -19,7 +17,14 @@ class _HomePageState extends State<HomePage>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(title: new Text("Life is beauty")),
-
+      body: Center(
+        child: new Text("sddsfsdfsdfsd"),
+      ),
+      bottomNavigationBar: new BottomNavigationBar(items: <BottomNavigationBarItem>[
+        new BottomNavigationBarItem(icon: new Icon(Icons.alarm),title: new Text("待办"),backgroundColor: Color.fromRGBO(255, 0, 0, 1),),
+        new BottomNavigationBarItem(icon: new Icon(Icons.airport_shuttle),title: new Text("计划"),backgroundColor: Color.fromRGBO(255, 0, 0, 1)),
+        new BottomNavigationBarItem(icon: new Icon(Icons.card_giftcard),title: new Text("财务"),backgroundColor: Color.fromRGBO(255, 0, 0, 1)),
+      ],),
     );
   }
 }
