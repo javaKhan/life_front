@@ -13,7 +13,6 @@ class _AppFrameState extends State<AppFrame> {
 //  String pageTitle ="Life is beauty";
   int currentIndex = 0;
   List viewList = [TodoView(),PlanView(),CostView(),MyView()];
-//  List titleList = ["待办事务","事务计划","财务状况","个人中心"];
   void tapHandler(int index){
     setState(() {
       this.currentIndex = index;
