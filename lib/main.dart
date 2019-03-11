@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:life_front/login/LoginView.dart';
 import 'AppFrame.dart';
 
 void main() => runApp(LifeApp());
@@ -13,7 +14,8 @@ class LifeApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AppFrame(),
+//      home: AppFrame(),
+      home: LoginView(),
     );
   }
 }

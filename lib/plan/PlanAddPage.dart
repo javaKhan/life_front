@@ -51,6 +51,9 @@ class PlanAddPageState extends State<PlanAddPage> {
   savePlan(){
 
   }
+  cancelPlan(BuildContext context){
+    Navigator.maybePop(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,12 +116,14 @@ class PlanAddPageState extends State<PlanAddPage> {
                 onPressed: savePlan,
               ),
               RaisedButton(
-                child: Text("删除计划"),
+                child: Text("放弃计划"),
                 color: Colors.red,
 //                highlightColor: Colors.amber,
                 textColor: Colors.white,
                 splashColor: Colors.black,
-                onPressed: savePlan,
+                onPressed: (){
+                  Navigator.maybePop(context);
+                }
               ),
             ],
           ),
