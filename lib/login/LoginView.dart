@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:life_front/AppFrame.dart';
+import 'service/LoginService.dart';
 class LoginView extends StatefulWidget {
 
   @override
@@ -12,10 +13,19 @@ class LoginViewState extends State<LoginView> {
   final login_form_key = GlobalKey<FormState>();
   String phone ,pwd;
 
-  login(){
+  login() async{
     login_form_key.currentState.save();
     login_form_key.currentState.validate();
+
     debugPrint('登陆提交: 手机: $phone    密码:$pwd');
+    LoginService loginService = LoginService();
+    var isLogin = await loginService.login(phone, pwd);
+    if(isLogin){
+      print(isLogin);
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>AppFrame()),(route)=>route==null);
+    }else{
+      print("登陆失败");
+    }
   }
 
   String validatePhone(value){

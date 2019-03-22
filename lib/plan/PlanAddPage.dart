@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 //import 'dart:async';
 
 import 'package:intl/intl.dart';
+import 'package:life_front/plan/model/PlanModel.dart';
+import 'package:life_front/plan/service/PlanService.dart';
 
 class PlanAddPage extends StatefulWidget {
   @override
@@ -14,6 +16,9 @@ class PlanAddPage extends StatefulWidget {
 class PlanAddPageState extends State<PlanAddPage> {
   GlobalKey<FormState> _addPlanKey = new GlobalKey<FormState>();
   final DateFormat dateFormat = DateFormat("yyyy-MM-dd");
+
+  String title ;
+  String comment;
   DateTime startDay = DateTime.now();
   DateTime endDay = DateTime.now().add(Duration(days: 1));
 
@@ -49,10 +54,29 @@ class PlanAddPageState extends State<PlanAddPage> {
   }
 
   savePlan(){
+    _addPlanKey.currentState.save();
+    _addPlanKey.currentState.validate();
+    PlanService planService = PlanService();
+    PlanModel planModel = PlanModel(this.title,this.comment,this.startDay,this.endDay);
+    planService.planAdd(planModel);
 
   }
   cancelPlan(BuildContext context){
     Navigator.maybePop(context);
+  }
+
+  //-
+  String valComment(value){
+    print("注释:"+value);
+    if(null!=value){
+      return "请输入内容描述";
+    }
+  }
+  String valTitle(value){
+    print("标题:"+value);
+    if(null!=value){
+      return "请输入标题";
+    }
   }
 
   @override
@@ -71,6 +95,8 @@ class PlanAddPageState extends State<PlanAddPage> {
             children: <Widget>[
               TextFormField(
                 decoration: new InputDecoration(labelText: "计划名称"),
+                onSaved: (value)=> this.title = value,
+                validator: valTitle,
               ),
               TextFormField(
                 maxLines: 5,
@@ -79,6 +105,8 @@ class PlanAddPageState extends State<PlanAddPage> {
                   labelText: "计划备注",
                   hintText: "",
                 ),
+                onSaved: (value)=> this.comment = value,
+                validator: valComment,
               ),
               InkWell(
                 onTap: _selectStartDate,
