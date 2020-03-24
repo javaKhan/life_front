@@ -8,8 +8,8 @@ class TodoGridView extends StatefulWidget {
 }
 
 class TodoGridViewState extends State<TodoGridView> {
-  int allTodoCount,
-      endTodoCount,
+  int allTodoCount = 0,
+      endTodoCount = 0,
       runTodoCount = 0;
 
   @override
@@ -17,12 +17,37 @@ class TodoGridViewState extends State<TodoGridView> {
 
   @override
   Widget build(BuildContext context) {
-    return Flex(direction: Axis.horizontal,
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: <Widget>[
-        InkWell(child: Card(child: Text("1111111"),)),
-        InkWell(child: Text("1111111")),
-        InkWell(child: Text("1111111")),
-      ],);
+    return Container(
+      color: Colors.blueAccent,
+      child:
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            color: Colors.amberAccent,
+            child:
+            Column(
+              children: <Widget>[
+                Text("待办"),
+                Text(runTodoCount.toString()),
+              ],
+            ),
+          ),
+          Column(
+            children: <Widget>[
+              Text("完成"),
+              Text(endTodoCount.toString()),
+            ],
+          ),
+          Column(
+            children: <Widget>[
+              Text("总计"),
+              Text(allTodoCount.toString()),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }

@@ -5,6 +5,7 @@ import "package:life_front/common/LAPI.dart";
 
 class LoginService {
   login(String phone, String pwd) async {
+    return true;
     Dio dio = new Dio();
     dio.options.baseUrl=LAPI.BASE_URL;
     dio.options.connectTimeout = 50000;
