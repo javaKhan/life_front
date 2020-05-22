@@ -11,11 +11,13 @@ class TodoView extends StatelessWidget {
       body: Container(
         color: Colors.grey[200],
 //        padding: EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            TodoGridView(),
-            TodoListView(),
-          ],
+        child:SingleChildScrollView(
+          child: Column(
+            children: [
+              TodoGridView(),
+              TodoListView(),
+            ],
+          ),
         ),
       ),
     );
